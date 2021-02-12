@@ -2,6 +2,7 @@ package com.student.management.manager;
 
 import com.student.management.dao.EmpDao;
 import com.student.management.model.Employee;
+import com.student.management.util.Consumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +18,15 @@ public class EmpManagerImpl implements EmpManager{
     @Autowired
     EmpDao empDao;
 
+    @Autowired
+    Consumer consumer;
+
     @Override
     public List<Employee> getAllEmployees()throws Exception {
 
         List<Employee> employees=new ArrayList<>();
        employees= empDao.findAll();
-       System.out.println("List Employee "+employees);
+       System.out.println("List Employee "+employees.size());
         return employees;
     }
 
@@ -36,6 +40,8 @@ public class EmpManagerImpl implements EmpManager{
     @Override
     public Employee createOrUpdateEmployee(Employee employee) throws Exception{
 
+        System.out.println("Enter EmpManagerImpl#createOrUpdateEmployee() Employee ");
+        System.out.println("Employee  "+employee);
         if(employee.getId()  == null)
         {
             employee = empDao.save(employee);

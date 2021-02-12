@@ -2,6 +2,7 @@ package com.student.management.controller;
 
 import com.student.management.manager.EmpManager;
 import com.student.management.model.Employee;
+import com.student.management.util.Producer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +16,9 @@ public class EmployeeController {
 
     @Autowired
     EmpManager empManager;
+
+    @Autowired
+    Producer producer;
 
     @RequestMapping("")
     public ModelAndView getAllEmployees(ModelAndView model) {
@@ -50,7 +54,9 @@ public class EmployeeController {
     public ModelAndView createOrUpdateEmployee(Employee employee) {
         ModelAndView model = new ModelAndView();
         try {
-            empManager.createOrUpdateEmployee(employee);
+            System.out.println("Enter EmployeeController#createOrUpdateEmployee()");
+            producer.produceMsg(employee);
+//            empManager.createOrUpdateEmployee(employee);
         } catch (Exception ex) {
             System.out.println("Exception " + ex);
         } finally {
