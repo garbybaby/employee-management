@@ -1,6 +1,6 @@
-package com.student.management.dao;
+package com.employee.management.dao;
 
-import com.student.management.model.Employee;
+import com.employee.management.model.Employee;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

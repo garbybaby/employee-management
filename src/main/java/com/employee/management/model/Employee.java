@@ -1,4 +1,4 @@
-package com.student.management.model;
+package com.employee.management.model;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

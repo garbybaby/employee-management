@@ -8,22 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+
 </head>
 
 <body>
-    <div class="container my-2">
+<div class="container my-2">
     <div class="card">
-    <div class="card-body">
-        <div th:switch="${employees}" class="container my-5">
-            <p class="my-5">
-                <a href="/edit" class="btn btn-primary">
-                 Add Employee </i></a>
-            </p>
-            <div class="col-md-10">
-                <h2 th:case="null">No record found !!</h2>
-                <div th:case="*">
-                    <table class="table table-striped table-responsive-md">
-                        <thead>
+        <div class="card-body">
+            <div th:switch="${employees}" class="container my-5">
+                <p class="my-5">
+                    <a href="/edit" class="btn btn-primary">
+                        Add Employee </i></a>
+                </p>
+                <p class="my-5" th:text="${empCount}">
+                    <a href="#" class="btn btn-primary">
+                        Employee Count </i></a>
+                </p>
+                <div class="col-md-10">
+                    <h2 th:case="null">No record found !!</h2>
+                    <div th:case="*">
+                        <table class="table table-striped table-responsive-md">
+                            <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>First Name</th>
@@ -36,8 +41,8 @@
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             <tr th:each="employee : ${employees}">
                                 <td th:text="${employee.id}"></td>
                                 <td th:text="${employee.firstName}"></td>
@@ -58,15 +63,22 @@
                                     </a>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
-                </div>
+                            </tbody>
+                        </table>
+                    </div>
 
+                </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
+</div>
 </body>
+<script type="text/JavaScript">
+<!-onload = "JavaScript:AutoRefresh(5000);"-->
+            function AutoRefresh( t ) {
+               setTimeout("location.reload(true);", t);
+            }
 
+
+</script>
 </html>
